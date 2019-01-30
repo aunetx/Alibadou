@@ -1,0 +1,28 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* {
+  user-select: none;
+}
+#paint {
+  width: 280px;
+  height: 280px;
+  border: 1px solid #ccc
+}
+#resize {
+  display: none;
+}
+#exported img {
+  width: 280px;
+  height: 280px;
+  border: 1px solid #ccc;
+  display: block;
+}

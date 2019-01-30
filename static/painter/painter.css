@@ -1,0 +1,173 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #16191b;
+  color: #e2e6e8;
+  font-family: 'Roboto Mono', monospace;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* {
+  user-select: none;
+}
+#painter-interface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;;
+}
+#paint {
+  width: 280px;
+  height: 280px;
+}
+#paint canvas {
+  border-radius: 3px;
+}
+#exported, #exported img, #resize, #middleCanvas {
+  display: none;
+}
+#buttons {
+  display: flex;
+  width: 280px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+#buttons button {
+  /* 28px */
+  font-family: 'Roboto Mono', monospace;
+  width: 48%;
+  height: 28px;
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  border-radius: 3px;
+  color: #16191b;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 0;
+  transition-duration: 0.3s;
+}
+#buttons button:hover {
+  background-color: #e2e6e8;
+  border-radius: 5px;
+}
+#buttons button:active {
+  background-color: #d1d8db;
+  transition-duration: 0.1s;
+  border-radius: 7px;
+}
+#div_pred {
+  /* 42px */
+  width: 280px;
+  text-align: center;
+  margin-top: 10px;
+  height: 30px;
+  display: block;
+  align-items: center;
+  position: relative;
+}
+#div_pred p {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease-out;
+}
+.hidden {
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+#chart {
+  width: 600px;
+  height: 400px;
+}
+
+#progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: calc(100% - 20px);
+  height: 100%;
+  border-left: 10px solid #e2e6e8;
+  border-right: 10px solid #e2e6e8;
+  overflow: hidden;
+}
+#progress .ball {
+  /* 14px */
+  height: 10px;
+  width: 0;
+  background: #e2e6e8;
+  position: relative;
+  margin: 0;
+}
+
+#progress .ball:nth-child(1) {
+  -webkit-animation: ball 2s ease-in-out infinite;
+  animation: ball 2s ease-in-out infinite;
+}
+#progress .ball:nth-child(2) {
+  -webkit-animation: ball 2s ease-in-out .1s infinite;
+  animation: ball 2s ease-in-out .1s infinite;
+}
+#progress .ball:nth-child(3) {
+  -webkit-animation: ball 2s ease-in-out .2s infinite;
+  animation: ball 2s ease-in-out .2s infinite;
+}
+@-webkit-keyframes ball {
+  0% {
+    left: 0;
+    width: 0px;
+  }
+  25% {
+    left: 0;
+    width: 300px;
+  }
+  50% {
+    left: 300px;
+    width: 0px;
+  }
+  75% {
+    left: 0;
+    width: 300px;
+  }
+  100% {
+    left: 0;
+    width: 0px;
+  }
+}
+
+@keyframes ball {
+  0% {
+    left: 0;
+    width: 0px;
+  }
+  25% {
+    left: 0;
+    width: 300px;
+  }
+  50% {
+    left: 300px;
+    width: 0px;
+  }
+  75% {
+    left: 0;
+    width: 300px;
+  }
+  100% {
+    left: 0;
+    width: 0px;
+  }
+}

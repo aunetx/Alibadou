@@ -1,0 +1,23 @@
+<article>
+  <h4>Description d'un réseau neuronal</h4>
+  <p>Voici comment peut être schématisé un réseau de neurones artificiel basique, appelé « perceptron multicouche » :</p>
+  <p class="noMargin"><img src="res/images/nnSchema.png" class="inlineImgBig" /></p>
+  <p>Sur ce schéma :</p>
+  <ul>
+    <li>Un rond représente un <span class="surligne">neurone</span> (node en anglais).</li>
+    <li>Ces neurones sont réliés entre eux par les <span class="surligne">synapses</span>, représentées par un trait.</li>
+    <li>Chaque synapse possède un <span class="surligne">poids</span> « weight », noté <span class="val">w</span>, entre -1 et 1 :<br>
+      Ce poids correspond à l’importance de l’information qui passe par ce vecteur.<br>
+      Il est réglé aléatoirement au début de l'apprentissage.</li>
+    <li>C’est dans le neurone que les calculs vont être effectués.</li>
+    <li>Un neurone peut aussi posséder une <span class="surligne">pondération</span> « bias », notée <span class="val">b</span>.<br>
+      Nous n'en utiliserons cependant pas dans notre réseau, pour plus de simplicité.</li>
+    <li>Un réseau de ce type est organisé en <span class="surligne">couches</span>, appelées « layers »<br>
+      Ces couches sont connectés entre elles grâce aux connections synaptiques se trouvant entre chaque layer.</li>
+    <li>La première couche est la couche d'entrée du réseau : <span class="surligne">« input layer »</span>.<br>
+      La dernière est la couche de sortie, où se trouvent les résultats : <span class="surligne">« output layer »</span>.<br>
+      Entre les deux, les couches sont appelées <span class="surligne">« hidden layers »</span>. Le nombre de ces couches traduit la profondeur du réseau.</li>
+    <li>Dans le cas suivant, il y a en tout 18 synapses dans le réseau.</li>
+    <li>Pour simplifier les calculs, les différentes valeurs de poids, pondérations... sont stockées dans des matrices.</li>
+  </ul>
+</article>

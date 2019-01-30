@@ -1,0 +1,15 @@
+{
+  "name": "painter",
+  "version": "1.0.0",
+  "description": "Painter program for TPE, framwork-based",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "delivery": "0.0.6",
+    "socket.io": "^2.2.0"
+  },
+  "author": "aunetx",
+  "license": "ISC"
+}

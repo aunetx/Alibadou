@@ -1,0 +1,83 @@
+html {
+	font-size: 100%;
+}
+body
+{
+	padding: 0;
+	margin: 0;
+	background-color: white;
+	font-size: 1.05em;
+	font-family: "Montserrat";
+}
+nav
+{
+	width: 100%;
+	height: 52px;
+}
+#nav_float
+{
+	position: fixed;
+	top: 0;
+	height: 3.5em;
+	width: 100%;
+	color: #000;
+	background-color: #fff;
+	z-index: 1;
+	font-family: "Cardo";
+	border-bottom: 2px dashed black;
+	transition-duration: 0.3s;
+}
+nav h1
+{
+	margin: 0;
+	margin-top: 7px;
+	font-size: 2em;
+	text-align: center;
+	font-weight: normal;
+}
+section
+{
+	width: 100%;
+	height: calc(100% - 52px);
+	display: flex;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+article
+{
+	width: 27%;
+	height: 300px;
+	margin: 20px 0;
+	padding: 10px;
+	/*border: 2px dashed black;*/
+}
+.line1
+{
+	height: 200px;
+	width: 28%;
+}
+.main
+{
+	width: 32%;
+	height: 350px;
+	text-align: justify;
+}
+.left
+{
+	text-align:left;
+}
+.center
+{
+	text-align: center;
+}
+.right
+{
+	text-align: right;
+}
+.hidden
+{
+	height: 0;
+}

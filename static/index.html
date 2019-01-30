@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>simplified Neural Network</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="icon" type="image/png" href="res/icon.png">
+  </head>
+  <body>
+    <div class="loader-wrapper">
+      <div class="loader">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </div>
+      <div class="text">CHARGEMENT... ÇA VAUT 20</div>
+    </div>
+    <header>
+      <div id="noNav">
+        <img src="res/logo.png" id="logo" />
+        <h1>sNn – <span id="pageName">Accueil</span></h1>
+      </div>
+      <nav>
+        <h2 id="h2nav">
+          &nbsp;<a onClick="goToPage('previous');" id="leftPage">&nbsp;&lt;&nbsp;</a>&nbsp;&nbsp;
+          <a onClick="showMenuList();" id="showMenu">Menu</a>&nbsp;&nbsp;
+          <a onClick="goToPage('next');" id="rightPage">&nbsp;&gt;&nbsp;</a>&nbsp;
+        </h2>
+      </nav>
+      <div id="menu">
+        <ul>
+          <li id="li0"><a onClick="goToPage(0);">Accueil</a></li>
+          <li id="li1"><a onClick="goToPage(1);">Introduction</a></li>
+          <li class="sousMenu" id="li2"><a onClick="goToPage(2);">L'apprentissage</a>
+            <ol>
+              <li id="li3"><a onClick="goToPage(3);">Partie I</a></li>
+              <li id="li4"><a onClick="goToPage(4);">Partie II</a></li>
+              <li id="li5"><a onClick="goToPage(5);">Partie III</a></li>
+              <li id="li6"><a onClick="goToPage(6);">Partie IV</a></li>
+            </ol>
+          </li>
+          <li class="sousMenu" id="li7"><a onClick="goToPage(7);">Le deep learning</a>
+            <ol>
+              <li id="li8"><a onClick="goToPage(8);">Partie I</a></li>
+              <li id="li9"><a onClick="goToPage(9);">Partie II</a></li>
+              <li id="li10"><a onClick="goToPage(10);">Partie III</a></li>
+              <li id="li11"><a onClick="goToPage(11);">Partie IV</a></li>
+              <li id="li12"><a onClick="goToPage(12);">Partie V</a></li>
+            </ol>
+          </li>
+          <li id="li13"><a onClick="goToPage(13);">Painter</a></li>
+        </ul>
+      </div>
+    </header>
+	<section id="content">
+    <article id="homepg">
+      <div id="h1homepg">
+        <div id="homepgTitle">
+          <h1 id="TPE">TPE</h1><h1>&nbsp;|&nbsp;</h1><h1 id="DPL">DEEP LEARNING</h1>
+        </div>
+        <h1><img src="res/visser/brain.png" /></h1>
+      </div>
+      <div id="pb">
+        <p><i>&nbsp;<span class="surligne">&nbsp;Problématique :&nbsp;</span></i></p>
+        <p>Pouvons-nous recréer le fonctionnement de l'aire visuelle humaine de manière informatique ?</p>
+      </div>
+      <div id="citationHomepg">
+        <p><cite>« La tristesse de l’intelligence artificielle est qu’elle est sans artifice, donc sans intelligence. »</cite> – Jean Baudrillard</p>
+      </div>
+      <div id="auteurs">
+        <h6>1S3 – Institut Fénelon</h6>
+        <h6>Clément Lalanne | Adrien Chamot | Aurélien Hamy</h6>
+      </div>
+    </article>
+	</section>
+  <!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/modules/echarts.js"></script>
+  <script src="javascript.js"></script>
+  <script type="text/javascript">
+  $(window).on('load', function() {
+    $(".loader-wrapper").fadeOut("1000");
+  })
+  </script>
+  <!-- End of scripts -->
+  </body>
+</html>

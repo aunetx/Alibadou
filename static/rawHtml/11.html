@@ -1,0 +1,29 @@
+<article>
+  <h4>Résumé de l'entraînement</h4>
+  <p>Pour résumer tout cela, notre réseau passe par plusieurs étapes lors d'un cycle :</p>
+  <ol>
+    <li><span class="surligne">Propagation avant :</span><br>
+      Les valeurs de la couche d'entrée sont propagées à travers le réseau, chaque neurone ajuste sa valeur en fonction des valeurs des neurones de la couche précédentes, et des poids associés à chaque connexion.<br>
+      La couche de sortie donne les résulats du réseau, ce sont les prédictions.
+    </li>
+    <li><span class="surligne">Calcul de l'erreur :</span><br>
+      Lors de l'entraînement, les valeurs attendues sont connues. Le réseau calcule donc son erreurs à partir de celles-ci.
+    </li>
+    <li><span class="surligne">Propagation de l'erreur :</span><br>
+      L'erreur de sortie est propagée à travers le réseau, de la dernière à la première couche. On obtient ainsi la participation de chaque neurone du réseau à l'erreur totale.
+    </li>
+    <li><span class="surligne">Ajustement des poids :</span><br>
+      Le réseau corrige un petit peu les poids de chaque liaison neuronale, en fonction de l'implication de ces neurones dans l'erreur finale.
+    </li>
+  </ol>
+  <p>Cependant, lors de l'entraînement, notre réseau ne se limite pas à un cycle : en effet, il doit non seulement diminuer ses erreurs – or la vitesse d'apprentissage limite la vitesse de correction, mais il doit surtout s'adapter aux entrées pour réellement apprendre.<br>
+    Ainsi, il effectuera plusieurs cycles, les un à la suite des autres, effectuant chacune des quatre étapes ci-dessus avec acharnement, tandis que les valeurs entrées changent à chaque cycle : on appelle cela une <span class="surligne">itération</span>.</p>
+  <p>Le but d'une itération est donc de faire diminuer le <span class="val">loss</span> du réseau. Cependant, cette diminution est minuscule à cause de la vitesse d'apprentissage : à quoi sert-elle donc ?</p>
+  <h4>Les hyperparamètres</h4>
+  <p>En réalité, d'un certain point de vue, le <span class="val">loss</span> agit comme une fonction normale. Notre but étant de réduire le résultat, ce que l'on effectue grâce à la propagation arrière s'appelle une <span class="surligne">descente en gradient</span> : on optimise les très nombreux paramètres pour arriver à un minimum.</p>
+  <p>En imaginant une descente en gradient sur une fonction imaginaire à deux paramètres, nous pouvons emprunter une petite animation à <a hrel="https://towardsdatascience.com/how-to-train-neural-network-faster-with-optimizers-d297730b3713">Piotr Skalski</a> nous montrant à quoi sert réellement le fait d'avoir une faible vitesse d'apprentissage :</p>
+  <p><img src="res/images/animationLN.gif" class="inlineImgBig" /></p>
+  <p>Nous voyons bien que, alors qu'avec un faible <span class="surligne">taux d'apprentissage</span> (à droite), la descente en gradient est rapide et directe, avec un fort <span class="surligne">taux d'apprentissage</span>, et donc en tentant de corriger toutes les erreurs du réseau d'un seul coup, nous ne faisons que tourner autour du minimum voulu sans jamais l'atteindre.</p>
+  <p>La vitesse d'apprentissage nous sert donc à maximiser nos chances de tomber sur le bon résultat, quitte à mettre énormement de puissance dans un démultiplication du besoin en itérations pour arriver à un résulat probant.</p>
+  <p>C'est en fait un <span class="surligne">hyperparamètre</span> : un paramètre qui nous servira à régler notre réseau lors de l'apprentissage, pour lui donner le comportement voulu. On initilisera en général ces hyperparamètres d'une façon plus ou moins aléatoire.</p>
+</article>

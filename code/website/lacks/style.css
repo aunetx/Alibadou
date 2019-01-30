@@ -1,0 +1,118 @@
+body
+{
+	padding: 0;
+	margin: 0;
+	background-color: white;
+}
+nav
+{
+	position: fixed;
+	top: 0;
+	height: 50px;
+	width: 100%;
+	color: #000;
+	background-color: #fff;
+	z-index: 1;
+	font-family: "Cardo";
+	border-bottom: 2px dashed black;
+	transition-duration: 0.3s;
+}
+.blacked
+{
+	color: #fff;
+	background-color: #000;
+	border-bottom: 2px dashed white;
+}
+nav h1
+{
+	margin: 0;
+	margin-top: 7px;
+	font-size: 30px;
+	text-align: center;
+	font-weight: normal;
+}
+#px52_high
+{
+	width: 100%;
+	height: 52px;
+}
+.gd
+{
+	width: 100%;
+	height: 52px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+.gd_img_container
+{
+	width: 40px;
+	height: 40px;
+	border: 2px dashed black;
+	border-radius: 50%;
+}
+.gd img
+{
+	width: 50%;
+	height: 50%;
+	padding: 25%;
+}
+.gu
+{
+	width: 52px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.gu_img_container
+{
+	width: 40px;
+	height: 40px;
+	border: 2px dashed black;
+	border-radius: 50%;
+}
+.gu img
+{
+	width: 50%;
+	height: 50%;
+	padding: 25%;
+	transform: rotate(-180deg);
+}
+.black_s .gu_img_container, .black_s .gd_img_container
+{
+	border: 2px dashed white;
+}
+.black_s .gu img, .black_s .gd img
+{
+	filter: invert(100%);
+}
+.screen
+{
+	width: 100%;
+	height: calc(100% - 52px);
+}
+section
+{
+	width: 100%;
+	height: calc(100% - 52px);
+	display: flex;
+}
+.white_s
+{
+	background-color: #fff;
+}
+.black_s
+{
+	background-color: #000;
+}
+article
+{
+	flex: auto;
+	height: 100%;
+}
+.art_left
+{
+}
+.art_right
+{
+}

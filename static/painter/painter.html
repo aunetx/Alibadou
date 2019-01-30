@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="./painter.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500" rel="stylesheet">
+  </head>
+  <body>
+    <div id="painter-interface">
+      <div id="paint">
+        <canvas id="myCanvas"></canvas>
+      </div>
+      <div id="buttons">
+        <button onclick="send()" id="send">Envoyer !</button>
+        <button onclick="reset()">Effacer</button>
+      </div>
+      <div id="div_pred">
+        <p><span id="prediction">Dessinez puis envoyez !</span></p>
+        <div id="progress" class="hidden">
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+        </div>
+      </div>
+      <div id="chart"></div>
+    </div>
+    <div id="exported">
+      <img src="" />
+      <canvas id="middleCanvas"></canvas>
+      <canvas id="resize"></canvas>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/delivery.js"></script>
+    <script src="/modules/echarts.js"></script>
+    <script src="painter.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="./painter.css" />
+  </head>
+  <body>
+    <div id="paint">
+      <canvas id="myCanvas"></canvas>
+    </div>
+    <div id="exported">
+      <img src="" />
+      <canvas id="resize"></canvas>
+    </div>
+    <button onclick="send();">Export image !</button>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/socket.io-stream.js"></script>
+    <script src="painter.js"></script>
+  </body>
+</html>
