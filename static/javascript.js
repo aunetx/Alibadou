@@ -1,7 +1,7 @@
 var socket = io()
   , page = 0
-  , pgMax = 13
-  , painterPage = pgMax;
+  , pgMax = 15
+  , painterPage = 14;
 
 if (page == 0) {
   $('#leftPage').addClass('noVisible');
@@ -40,7 +40,7 @@ function goToPage(pg) {
       $('#menu li').removeClass('menuPageOn');
       $('#menu #li' + page).addClass('menuPageOn');
       $('#leftPage').removeClass('noVisible');
-      $('#rightPage').addClass('noVisible');
+      $('#rightPage').removeClass('noVisible');
 
       $(iframe).on('load', function() {
         $(".loader-wrapper").fadeOut('1000');
@@ -76,6 +76,9 @@ socket.on('page', function(jsonPage) {
   }
   if (page == 4) {
     initializeExp2();
+  }
+  if (page == pgMax) {
+    $('#rightPage').addClass('noVisible');
   }
   console.log('Gone to page ' + page);
   setTimeout(function() {

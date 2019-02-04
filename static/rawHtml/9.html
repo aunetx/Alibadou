@@ -1,7 +1,7 @@
 <article>
   <h4>La propagation avant</h4>
-  <p>Dans un rn, la première étape consiste à obtenir une sortie à partir des entrées données, en propageant les valeurs à travers le réseau. C'est la <span class="surligne">propagation avant</span>.</p>
-  <p>Ainsi, pour chaque neurone de chaque couche, on effectuera un calcul afin d'obtenir une valeur au neurone, que l'on nottera <span class="val">y</span>.</p>
+  <p>Dans un réseau neuronal, la première étape consiste à obtenir une sortie à partir des entrées données, en propageant les valeurs à travers le réseau. C'est la <span class="surligne">propagation avant</span>.</p>
+  <p>Ainsi, pour chaque neurone de chaque couche, on effectuera un calcul afin d'obtenir une valeur au neurone, que l'on notera <span class="val">y</span>.</p>
   <p><img src="res/images/calculsNeur.svg" class="inlineImgLt" /></p>
   <p><span class="val">i</span> (pour input/entrée en français) correspond à l’information envoyée par le neurone précédent : c'est le <span class="val">y</span> d'un neurone de la couche précédente.</p>
   <p><span class="val">w</span> correspond au poids de l’information : c'est son importance.<br>
@@ -10,11 +10,11 @@
     Cependant, il n'est pas très utile pour la résolution d'un problème tel que la reconnaissance d'images de faible résolution : ainsi on ne s'en servira pas.</p>
   <p><span class="val">z</span> correspond donc à la somme de <span class="val">i * w</span> de la couche précédente ajoutée à <span class="val">b</span>.<br>
     Ainsi : <span class="val">z = Σ(i * w) + b</span></p>
-  <p>Cependant, ces calculs expriment une certaine linéarité. Et malheureusement, pour des raisons mathématique très pousées que nous n'expliquerons pas ici, ils ne suffisent en réalité que très rarement.<br>
+  <p>Cependant, ces calculs expriment une certaine linéarité. Et malheureusement, pour des raisons mathématique très poussées que nous n'expliquerons pas ici, ils ne suffisent en réalité que très rarement.<br>
     En effet, dès lors que le problème posé au réseau n'est pas linéaire (ce qui est le cas dans quasiment toutes les situations, à l'exception par exemple de la séparation de deux groupes de points grâce à une droite), ce réseau n'aura aucune efficacité.</p>
   <p>Ainsi, on devra appliquer une fonction dite <span class="surligne">d'activation</span> afin d'obtenir une valeur ne dépendant pas seulement des couches précédentes : les plus utilisées sont ReLU, Tanh ou Sigmoid. On notera cette activation <span class="val">g(z)</span>.</p>
   <p>Sigmoid par exemple correspond à : <span class="val">sig(x) = 1 / 1+e<sup>-x</sup></span>. Pour une explication plus visuelle, on peut ainsi en tracer une courbe :<img src="res/images/sigmoid.svg" class="invert inlineImgLt marginLt" /></p>
-  <p>En prenant un peu d'avance, il nous est vital pour plus tard d'avoir une fonction nous donnant la <span class="surligne">dérivée</span> de cette fonction en un abcisse <span class="val">x</span> : on la notera <span class="val">g'(x)</span>.<br>
+  <p>En prenant un peu d'avance, il nous est vital pour plus tard d'avoir une fonction nous donnant la <span class="surligne">dérivée</span> de cette fonction en un abscisse <span class="val">x</span> : on la notera <span class="val">g'(x)</span>.<br>
     Dans le cas de la fonction sigmoid, sa dérivée est donnée par : <span class="val">sig'(x) = 1 / (1 + e<sup>-x</sup>)</span>
   <p>On appliquera cette activation à <span class="val">z</span>. Ainsi, pour chaque neurone, la valeur <span class="val">y</span> sera donnée par :</p>
   <p><span class="val">y = g( Σ(i * w) + b )</span></p>

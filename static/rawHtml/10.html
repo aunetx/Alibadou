@@ -1,7 +1,7 @@
 <article>
   <h4>La propagation arrière : l'apprentissage</h4>
   <p>Après un cycle de propagation avant, on obtient un résultat. Cependant, celui-ci n'a aucun lien avec le résultat attendu, du moins avant l'apprentissage : on va chercher à réduire ses erreurs, c'est la <span class="surligne">propagation arrière</span>.</p>
-  <p>Cela permet de régler les coefficients (poids et pondération) du réseau neuronal en fournissant une entrée dont on connait la valeur et en comparant le résultat du réseau avec le résultat attendu.</p>
+  <p>Cela permet de régler les coefficients (poids et pondération) du réseau neuronal en fournissant une entrée dont on connaît la valeur et en comparant le résultat du réseau avec le résultat attendu.</p>
   <p>On va ainsi chercher tout d'abord à trouver l'erreur présente dans le réseau.</p>
   <h4><i>1 – Calcul de l'erreur du réseau</i></h4>
   <p>En réalité, il existe plusieurs types de calculs d'erreurs, plus ou moins coûteux en puissance ou en efficacité.<br>
@@ -17,13 +17,13 @@
   <p>En fait, l'erreur d'un neurone <span class="val">j</span> est donnée par la dérivée de la fonction d'activation sur la valeur de ce neurone avant activation, à laquelle on multiplie la somme des erreurs de la couche prédédente multipliées aux poids associés. On écrira cette erreur <span class="val sub">e<sub>j</sub></span>.</p>
   <p>Mathématiquement, cela nous donne : <span class="val sub">e<sub>j</sub> = g'(z<sub>j</sub>) * Σ<sub>(i=n,0)</sub>(w<sub>ij</sub> * e<sub>i</sub>)</span>, avec <span class="val">n</span> nombre de neurones de la couche précédente, et donc <span class="val">i</span> neurone du layer précédent (donc à droite, nous sommes toujours dans la propagation arrière).</p>
   <p>Pour l'avant-dernière couche, qui n'a derrière elle que la couche de sortie, <span class="val sub">e<sub>i</sub> = loss</span>.</p>
-  <p>Au prix de calculs assez coûteux en puissance, mais surtout très difficilement maîtrisable – on utilise des matrices pour faire tous cela, c'est ~2000x plus rapide en temps de calculs mais autant de fois plus compliqué à faire – on obtient donc une erreur associé à chaque neurone du réseau.</p>
-  <p><sub>PS : la rédaction s'excuse personnellement pour l'écriture des calculs avec Σ, il n'est réellement pas aisé d'écrire de vrais expressions mathématiques en HTML.</sub></p>
+  <p>Au prix de calculs assez coûteux en puissance, mais surtout très difficilement maîtrisable – on utilise des matrices pour faire tout cela, c'est ~2000x plus rapide en temps de calculs mais autant de fois plus compliqué à faire – on obtient donc une erreur associée à chaque neurone du réseau.</p>
+  <p><sub>PS : la rédaction s'excuse personnellement pour l'écriture des calculs avec Σ, il n'est réellement pas aisé d'écrire de vraies expressions mathématiques en HTML.</sub></p>
   <h4><i>3 - Mise à jour des poids</i></h4>
   <p>Il ne nous reste maintenant quasiment plus qu'à corriger les poids du réseau pour enfin s'approcher du résultat attendu, et donc réduire le <span class="val">loss</span>.</p>
-  <p>Pour cela, on va tout d'abord définir une <span class="surligne">vitesse d'apprentissage</span> : elle nous permettra d'éviter de "corriger" tout le réseau d'un coup, ce qui aurait des résultats inattendu, nous le verrons bientôt.<br>
-    Appellé learning rate et simplifiée en <span class="val">ln</span>, sa valeur est souvent comprise entre <span class="val">0.003</span> et <span class="val">0.1</span>.</p>
-  <p>Enfin, on mettra à jour les coefficients en enlevant, pour les poids de chaque neurone, le delta d'erreur de celle-ci multipliée à la valeur de la neurone précédente (rappelons-nous qu'un poids en lui-même est définit par un <span class="surligne">vecteur</span> reliant deux neurones, il semble donc normal que l'on prenne en compte la valeur du neurone vers laquel le poids pointe pour le mettre à jour).</p>
+  <p>Pour cela, on va tout d'abord définir une <span class="surligne">vitesse d'apprentissage</span> : elle nous permettra d'éviter de "corriger" tout le réseau d'un coup, ce qui aurait des résultats inattendus, nous le verrons bientôt.<br>
+    Appellé learning rate et simplifié en <span class="val">ln</span>, sa valeur est souvent comprise entre <span class="val">0.003</span> et <span class="val">0.1</span>.</p>
+  <p>Enfin, on mettra à jour les coefficients en enlevant, pour les poids de chaque neurone, le delta d'erreur de celui-ci multiplié à la valeur du neurone précédent (rappelons-nous qu'un poids en lui-même est défini par un <span class="surligne">vecteur</span> reliant deux neurones, il semble donc normal que l'on prenne en compte la valeur du neurone vers lequel le poids pointe pour le mettre à jour).</p>
   <p>Mathématiquement, cela nous donne : <span class="val sub">w<sub>ij</sub> = w<sub>ij</sub> - ln * e<sub>i</sub> * z<sub>j</sub></span>.</p>
   <p>En suivant ce fonctionnement, un algorithme peut ainsi arriver au résultat espéré : il voit sa marge d'erreur, son <span class="val">loss</span>, diminuer. Cette diminution est cependant très faible, à cause de la faible valeur de la vitesse d'apprentissage.</p>
 </article>

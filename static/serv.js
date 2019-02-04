@@ -1,4 +1,4 @@
-const express = require('express')
+﻿const express = require('express')
     , app = express()
     , http = require('http').Server(app)
     , io = require('socket.io')(http)
@@ -25,8 +25,8 @@ function getDateTime() {
   return day + "-" + month + "-" + year + " " + hour + "h " + min + "min " + s + "s " + ms + "ms";
 }
 
-authorizedPage = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ];
-var log = false;
+authorizedPage = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15 ];
+var log = true;
 
 if (log) {
   var logPath = __dirname + '/logs/' + getDateTime() + '.log'
@@ -59,6 +59,27 @@ function fileRead(fl, ext, id) {
   return out
 }
 
+function writeClientFile(type) {
+  var nbClients;
+  fs.readFile('logs/clients', function read(err, data) {
+    if (err) {
+        throw err;
+    }
+    nbClients = parseInt(data, 10);
+    if (type == 'connection') {
+      nbClients += 1;
+    } else if (type == 'disconnect') {
+      nbClients -= 1;
+    }
+    fs.writeFile('logs/clients', nbClients, (err) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+    })
+  });
+}
+
 io.sockets.on('connection', function(socket) {
   error = false;
   var socketId = socket.id;
@@ -68,6 +89,8 @@ io.sockets.on('connection', function(socket) {
   }
   console.log('Real-time connection up with '+clientIp+', id = '+socketId);
   socket.emit('connected');
+
+  writeClientFile('connection');
 
   socket.on('goToPage', function(page){
     console.log(page);
@@ -84,6 +107,11 @@ io.sockets.on('connection', function(socket) {
         console.log('Page sent to client ' + socketId)
       }
     }
+  });
+
+  socket.on('disconnect', function() {
+    console.log('Client déconnecté : ' + socketId);
+    writeClientFile('disconnect');
   });
 
   var delivery = dl.listen(socket);

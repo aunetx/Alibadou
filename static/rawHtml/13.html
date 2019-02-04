@@ -1,0 +1,46 @@
+<article>
+  <h4>L'algorithme de deep learning – Programmation</h4>
+  <p>Ainsi, nous avons pu voir quels sont les différents mécanismes qui composent un réseau de neurones informatique, ainsi que ses liens avec un réseau neuronal biologique. Pour nous permettre de répondre pleinement à notre problématique, nous devons donc effectuer une dernière chose : tester le fonctionnement d'une IA.</p>
+  <p>Pour cela, nous avons donc programmé un <span class="surligne">algorithme</span> reprenant à la lettre chacune des étapes précédentes, à savoir :</p>
+  <ol>
+    <li>Propagation avant</li>
+    <li>Calcul de l'erreur</li>
+    <li>Propagation arrière</li>
+    <li>Correction des poids</li>
+    <li>Retour à l'étape 1, pour chaque image de chaque epoch.</li>
+  </ol>
+  <p>En utilisant la base de données MNIST précédemment évoquée, nous avions ainsi un nombre suffisant de valeurs d'entraînement, à savoir 35 000 correspondances nombre – image.</p>
+  <p>Afin d'obtenir une puissance de calcul conséquente, mais tout en utilisant un <span class="surligne">langage de programmation</span> facile à utiliser et permettant l'utilisation de calculs mathématiques matriciels formels, nous avons utilisé le langage <span class="val">Python</span> couplé à sa célèbre librairie de gestion de matrices, <span class="val">Numpy</span>.</p>
+  <p>Une fois l'entraînement effectué, nous n'avons ainsi plus qu'à <span class="surligne">nourrir</span> notre réseau avec une image tout juste dessinée, afin d'obtenir une prédiction du nombre qu'elle est censée représenter.</p>
+  <p>Pour permettre l'utilisation de notre algorithme en ligne, nous avons de plus codé un <span class="surligne">serveur web</span> en <span class="val">Nodejs</span>, utilisant une connexion bilatérale en temps réel entre le client – vous – et le serveur, un <span class="surligne">Raspberry Pi 2B</span> installé dans une de nos chambres, effectuant de là tous les calculs.</p>
+  <p>Nous aurions pu vous permettre de choisir des hyperparamètres et d'entraîner le réseau dessus, permettant ainsi de voir leur implication dans l'apprentissage et voir par exemple qu'une vitesse d'apprentissage trop élevée conduit fréquemment à une marge d'erreur irréductible, ou qu'un entraînement trop long produit un surentraînement et interdit donc une prédiction efficace de nombre dessiné par l'utilisateur.</p>
+  <p>Cependant, cela aurait demandé un temps de calcul très long, de l'ordre de plusieurs heures sur le Raspberry Pi, pour chaque expérimentation : pour plus d'efficacité et de simplicité, nous vous avons donc fourni un modèle pré-entraîné par nos soins, ayant la structure suivante :</p>
+  <ul>
+    <li>Couche d'entrées : 784 neurones</li>
+    <li>Seconde couche : 400 neurones</li>
+    <li>Troisième couche : 200 neurones</li>
+    <li>Quatrième couche : 100 neurones</li>
+    <li>Couche de sorties : 10 neurones</li>
+    <li><span class="val">30 epochs</span>, et une vitesse d'apprentissage de <span class="val">ln = 0.03</span>.</li>
+  </ul>
+  <p>Avec un total de 5 couches, ayant chacune un nombre régressif de neurones, notre entraînement s'est terminé en un peu plus de <span class="surligne">30 minutes</span> sur un ordinateur bien plus puissant qu'un Raspberry Pi.</p>
+  <p>Le résultat de cet entraînement est visible à la page suivante : <a onClick="goToPage(14);" class="linkPg">l'expérimentation</a>. N'hésitez pas à le tester, avant de revenir voir la partie ci-dessous.</p>
+  <h4>Les résultats</h4>
+  <p>Après des tests, nous avons pu voir que les résulats sont assez probants : en effet, si le réseau ne reconnaît pas avec une précision telle que celle qu'a un humain lors d'un exercice de lecture, il est bien capable de reconnaître un chiffre, moyennant quelques erreurs.</p>
+  <p>En analysant les erreurs, on peut se rendre compte d'une chose : en réalité, l'algorithme se trompe bien plus si le dessin n'est pas centré et avec une image d'une taille homogène. C'est ainsi un gros problème qui intervient ici, qui est la faculté du réseau à s'adapter à une image trop différente que celles avec lesquelles il aura été entraîné.<br>
+    En effet, celles-ci sont quasiment toutes centrées et agrandies de façon à obtenir un ratio constant de la hauteur du chiffre avec la taille de l'image. C'est donc bien un <span class="surligne">problème des valeurs d'apprentissage</span> plus que de construction du réseau, quoique nous aurions bien sûr pu effectuer un recentrage automatique de l'image après chaque tracé, pour assurer un résultat optimal.</p>
+  <p>De plus, si l'on dessine une image choisie au hasard, le réseau se forcera à trouver un résultat qu'il pensera cohérent : c'est ainsi le cas si vous remplissez la zone de dessin en noir, l'algorithme croira voir avec une assurance démesurée un 5. C'est de plus ici un exemple du <span class="surligne">manque de capacité d'adaptation</span> du réseau à un type de problème qu'il n'a jamais rencontré lors de l'apprentissage.</p>
+  <p>Ainsi, notre IA n'est capable d'effectuer brillamment son travail que dans un cadre bien précis, celui qui lui aura été attribué durant l'entraînement. On pourra faire changer ce cadre en donnant plus de capacités au réseau notamment, mais cela au prix d'une puissance de calculs supplémentaire pour peu de gains : en effet, la seule manière d'améliorer significativement les performances du réseau à notre niveau est de changer toute une partie des méthodes et des algorithmes d'apprentissage, chose que nous ne pouvons bien évidemment pas nous permettre maintenant.</p>
+  <p>D'une manière similaire, nous pouvons trouver de nombreux autres défauts à ce réseau. Cependant, sa capacité de déduction est largement prouvée, et les résultats correspondent en général aux attentes.</p>
+  <h4>La lenteur du réseau</h4>
+  <p>Vous avez sans doute remarqué que le résultat d'un dessin met assez longtemps à apparaître, environ 4 secondes. Notre IA n'est pourtant pas très développée, mais de nombreux paramètres rentrent en compte dans cette vitesse :</p>
+  <ul>
+    <li>Nous hébergeons notre IA sur un micro-ordinateur à la capacité de calcul très réduite, mais au prix très abordable (~30€),</li>
+    <li>Chaque propagation avant est extrêmement coûteuse en calculs, de l'ordre de 2,5 millions de multiplications de flottants (nombres décimaux),</li>
+    <li>Notre algorithme n'est que peu optimisé, du fait de sa complexité,</li>
+    <li>Et enfin, notre connexion internet est très limitée, la transmission de l'image et des résulats est donc soumise à une certaine latence : 1000ms en moyenne.</li>
+  </ul>
+  <h4>Le code</h4>
+  <p>Nous avons partagé le code du site web ainsi que, bien sûr, du réseau de neurones artificiel sur Github. Cependant, le code n'est que très peu commenté, et encore moins expliqué pour des raisons regrettables de rapidité de programmation. Si vous avez toutefois besoin d'explication plus claire sur telle ou telle partie du code, contactez-nous directement sur Github : nous serons rapidement disponibles.</p>
+  <p>Le code est ici : <a href="https://github.com/aunetx/Alibadou" target="_blank" class="linkPg">https://github.com/aunetx/Alibadou</a>.</p>
+</article>

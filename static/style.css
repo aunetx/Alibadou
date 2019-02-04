@@ -291,6 +291,15 @@ cite {
 .sub {
   padding-bottom: 4px;
 }
+.linkPg {
+  background-color: #328ebbdd;
+  color: #fff;
+  padding: 0 3px;
+  transition-duration: 0.3s;
+}
+.linkPg:hover {
+  background-color: #328ebb99;
+}
 
 /* Only Homepage */
 

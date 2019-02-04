@@ -1,19 +1,16 @@
 <article>
   <h4>Les valeurs entrées</h4>
-  <p>Ainsi, notre réseau prend en entrée une image, pour prédire le nombre écrit sur cette image. Il devra donc, pour apprendre, s'entraîner sur un grand nombre d'images différentes, pour être sûr d'ensuite être capable de prédire la signification de n'importe quelle image de chiffre : on doit donc lui donner une <span class="surligne">banque d'image</span> annotées.</p>
+  <p>Ainsi, notre réseau prend en entrée une image, pour prédire le nombre écrit sur cette image. Il devra donc, pour apprendre, s'entraîner sur un grand nombre d'images différentes, pour être sûr ensuite d'être capable de prédire la signification de n'importe quelle image de chiffre : on doit donc lui donner une <span class="surligne">banque d'images</span> annotées.</p>
   <p>C'est en réalité le plus gros point faible d'une IA basée sur le deep learning : elle aura besoin d'être nourrie grâce à un nombre inimaginable d'exemples pour apprendre.<br>
-    Rien que pour notre "petit" problème de reconnaissance de chiffres, nous avons eu besoin de l'illustre base de donnée <span class="surligne">MNIST</span> : 35 000 images de nombres écris à la main, classés en 10 catégories (de 0 à 9). Nous avons donc 35 000 images que nous devons donner au réseau.</p>
+    Rien que pour notre "petit" problème de reconnaissance de chiffres, nous avons eu besoin de l'illustre base de donnée <span class="surligne">MNIST</span> : 35 000 images de nombres écrits à la main, classés en 10 catégories (de 0 à 9). Nous avons donc 35 000 images que nous devons donner au réseau.</p>
   <p>Pour grandement simplifier les processus d'entraînement, on divisera ces 35 000 images en deux catégories : une catégorie sur laquelle le réseau s'entraînera et apprendra, avec 25 000 images, et une qu'il utilisera pour se tester, avec 10 000 images : il ne se sera en effet jamais entraîné dessus, c'est donc un bon moyen de mesurer son évolution.</p>
-  <p>Nous rassemblons donc les 25 000 images d'entraînement dans ce que nous appellons un <span class="surligne">epoch</span>. Ainsi, lors de l'entraînement, s'il effectue 1 epoch, notre réseau s'entraînera une fois avec chacune des 25 000 images auxquels il a accès.</p>
+  <p>Nous rassemblons donc les 25 000 images d'entraînement dans ce que nous appellons un <span class="surligne">epoch</span>. Ainsi, lors de l'entraînement, s'il effectue 1 epoch, notre réseau s'entraînera une fois avec chacune des 25 000 images auxquelles il a accès.</p>
   <p>C'est aussi un <span class="surligne">hyperparamètre</span>. Nous avons choisi de limiter ce nombre d'epochs à 30 : en effet, il existe un risque si le réseau s'entraîne trop, ce qui est tentant : <span class="surligne">l'overfitting</span>.</p>
   <h4>L'overfitting</h4>
   <p>Si notre réseau s'entraîne trop avec ses 25 000 images, il serait en théorie capable de prédire chacune de ses images avec un taux d'erreur nul : son <span class="surligne">loss</span> descendrait à 0, ce à quoi il tend.</p>
   <p>Cependant, que se passerait-il si on lui donnait, après l'entraînement, à prédire une image qu'il n'a jamais vu ? Il ne saura pas quoi faire.<br>
     Il ne se sera entraîné qu'avec ses propres images, et est donc incapable de s'adapter. Il est donc <span class="surligne">overfitted</span>, ou <span class="surligne">surentraîné</span>.</p>
   <p>Les 10 000 images de test sont donc un très bon moyen de vérifier que le réseau ne se surentraîne pas.</p>
-  <p>Ainsi, lors de l'entraînement du réseau, il faut tenir compte de chacun des hyperparamètres (il en existe d'autres, mais ils sont bien moins importants à notre niveau) afin d'obtenir le résultar espéré.<br>
-    C'est un savant mélange, que même les plus braves ignorent : on entre ainsi dans le monde de la sueur et du test.</p>
-  <h4>A vous de tester !</h4>
-  <p>Grâce à toute cette méthode, nous pouvons donc entraîner notre réseau sur ces images, et, à l'aide de trop nombreux efforts, nous avons pu mettre en place une zone de test de notre réseau de neurones pré-entraîné : à la page suivante.<p>
-  <p>Soyez gentils, il n'est pas encore très intelligent, mais sans doute un jour nous réussirons à le faire évoluer afin de mener encore mieux son travail : prédire des chiffres.</p>
+  <p>Ainsi, lors de l'entraînement du réseau, il faut tenir compte de chacun des hyperparamètres (il en existe d'autres, mais ils sont bien moins importants à notre niveau) afin d'obtenir le résultat espéré.</p>
+  <p>Le choix des hyperparamètres est très variable en fonction des conditions d'entraînement du réseau : ainsi, une des seules manières de connaître l'efficacité de tel ou tel paramètre est de tester.</p>
 </article>
